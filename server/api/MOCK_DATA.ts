@@ -1,4 +1,4 @@
-[
+export let inventoryData = [
     {
         "id": "347349dc-a36d-4bf7-a14f-4cdb55f97b89",
         "name": "4Runner",

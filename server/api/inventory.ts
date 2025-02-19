@@ -1,9 +1,7 @@
-import mock from './MOCK_DATA.json';
-
 import type { H3Event } from 'h3'
+import { inventoryData } from './MOCK_DATA';
 
 // TODO I don't know how to manage mock data properly in Nuxt
-export const inventoryData = [...mock]
 export default cachedEventHandler((_event) => {
     return { hello: inventoryData }
 }, {

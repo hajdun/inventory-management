@@ -1,5 +1,5 @@
-import { inventoryData } from '../inventory';
-
+import { InventoryItem } from '~/types/Inventory';
+import { inventoryData } from '../MOCK_DATA';
 
 export default defineEventHandler(async (event) => {
     //  const query = getQuery(event) was empty ({}) for some reason
@@ -15,7 +15,8 @@ export default defineEventHandler(async (event) => {
     }
 
     if (event.req.method === 'PUT') {
-        const requestBody = await readBody(event)
+
+        const requestBody: InventoryItem = await readBody(event)
 
         const modifyAtIndex = findItemIndexById()
         const originalInventoryItem = inventoryData[modifyAtIndex]

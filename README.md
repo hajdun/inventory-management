@@ -173,6 +173,9 @@ Would be nice to be able to edit/delete items
 
 Add item is not added
 
+It would be nice to add debouncing or throttling to quantity modification.
+
+Storage issue
 I am used to creating Node servers which [can actually store and retrieve data](https://github.com/hajdun/express_crud/blob/main/backend/server.js). 
 I never used Nuxt before.
 Nuxt throws away the array every now and then. I don't know why.
