@@ -24,7 +24,7 @@ const { data, error, refresh } = await useFetch('/api/inventory', {
 
 if (!data.value || error) {
   if (error) {
-    console.error(error?.value?.name, error?.value?.message)
+    console.error(error)
   }
   await refresh()
 } else {

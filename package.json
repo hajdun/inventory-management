@@ -13,6 +13,7 @@
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@vueuse/core": "^12.7.0",
     "nuxt": "^3.6.0",
+    "unstorage": "^1.14.4",
     "vue": "latest",
     "vue-router": "latest"
   }

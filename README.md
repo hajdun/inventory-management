@@ -175,6 +175,8 @@ Add item is not added
 
 It would be nice to add debouncing or throttling to quantity modification.
 
+Would be nice to cache static resources properly (e.g. images)
+
 Storage issue
 I am used to creating Node servers which [can actually store and retrieve data](https://github.com/hajdun/express_crud/blob/main/backend/server.js). 
 I never used Nuxt before.

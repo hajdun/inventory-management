@@ -1,13 +1,23 @@
 import { InventoryItem } from '~/types/Inventory';
-import { inventoryData } from '../MOCK_DATA';
 
 export default defineEventHandler(async (event) => {
+
+    // TODO this is not exactly how it needs to be used
+    let inventoryData = await useStorage("assets:server").getItem<InventoryItem[]>('json:foobar.json')
+
     //  const query = getQuery(event) was empty ({}) for some reason
     const queryId = event.context.params?.id || "";
 
-    const findItemIndexById = () => {
-        return inventoryData.findIndex(invD => invD.id === queryId)
+
+    // retry
+    if (!inventoryData) {
+        inventoryData = await useStorage("assets:server").getItem<InventoryItem[]>('json:foobar.json')
     }
+
+    const findItemIndexById = () => {
+        return inventoryData.findIndex((invD: InventoryItem) => invD.id === queryId)
+    }
+
 
     if (event.req.method === 'GET') {
         const index = findItemIndexById()
@@ -41,7 +51,9 @@ export default defineEventHandler(async (event) => {
             const newQty = parseInt(requestBody.quantity)
 
             inventoryData[modifyAtIndex] = { ...originalInventoryItem, quantity: newQty, lastUpdated: requestBody.lastUpdated as string }
+            // await useStorage("assets:server").setItem("json/MOCK_DATA.json", inventoryData)
 
+            await useStorage("assets:server").setItem('json:foobar.json', inventoryData)
             return {
                 success: true, message: `Modified quantity of ${originalInventoryItem.name} from ${originalQty} to ${newQty} at ${new Date(requestBody.lastUpdated)}`
             };

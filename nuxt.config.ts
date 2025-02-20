@@ -11,6 +11,14 @@ export default defineNuxtConfig({
         maxAge: 60
       }
     },
+  },
+  nitro: {
+    storage: {
+      "foobar.json": {
+        driver: 'fs',
+        base: './server/assets/json/MOCK_DATA.json'
+      }
+    }
   }
 })
 
